@@ -4,6 +4,7 @@ import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
 import AuthContext from '../Context/AuthContext';
+import Input from '../Input/Input';
 //Email Reducer
 const EmailReducer = (state, action) => {
   if(action.type === 'UserInput'){
@@ -83,34 +84,24 @@ const Login = (props) => {
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            PasswordState.isValid === false ? classes.invalid : ''
-          }`}
-        >
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={PasswordState.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
+      <Input 
+        id="email" 
+        label="E-Mail" 
+        type="email" 
+        isValid={EmailIsValid} 
+        value={emailState.value} 
+        onChange = {emailChangeHandler}
+        onBlur = {validateEmailHandler}
+        />
+        <Input 
+        id="password" 
+        label="Password" 
+        type="password" 
+        isValid={PasswordIsValid} 
+        value={PasswordState.value} 
+        onChange = {passwordChangeHandler}
+        onBlur = {validatePasswordHandler}
+        />
         <div className={classes.actions}>
           <Button type="submit" className={classes.btn} disabled={!formIsValid}>
             Login
@@ -120,5 +111,4 @@ const Login = (props) => {
     </Card>
   );
 };
-
 export default Login;
