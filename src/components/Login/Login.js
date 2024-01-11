@@ -54,9 +54,6 @@ const Login = (props) => {
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'UserInput', val: event.target.value});
-    // setFormIsValid(
-    //   event.target.value.includes("@") && PasswordState.isValid
-    // );
   };
 
   const passwordChangeHandler = (event) => {
